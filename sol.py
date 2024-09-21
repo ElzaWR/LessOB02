@@ -86,3 +86,8 @@ if __name__ == "__main__":
     # Администратор удаляет пользователя с ID 1
     print("# Администратор удаляет пользователя с ID 1")
     admin.remove_user(user_list, 1)
+
+    # Вывод оставшихся пользователей после удаления
+    print("# Вывод оставшихся пользователей после удаления")
+    for user in user_list:
+        print(f"User: {user.get_name()}, Access Level: {user.get_access_level()}")

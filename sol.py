@@ -63,7 +63,22 @@ if __name__ == "__main__":
     print(f'user2 = {user2.get_name()}')
 
     # Создаем администратора
-    admin = Admin(0, "Admin User")
+    admin = Admin(0, "Admin-User")
 
     print("# Создаем администратора")
-    print(f'Admin = {admin.get_name()}')
+    print(f'Admin = {admin.get_name()}') \
+
+    # Тестируем добавление в Систему из под абминистратора
+    # Пустой список пользователей
+    user_list = []
+
+    # Администратор добавляет пользователей в систему
+    print("# Администратор добавляет пользователей в систему")
+    admin.add_user(user_list, user1)
+    admin.add_user(user_list, user2)
+
+    # Вывод всех пользователей в системе
+    print("# Вывод всех пользователей в системе")
+    for user in user_list:
+        print(f"User: {user.get_name()}, Access Level: {user.get_access_level()}")
+

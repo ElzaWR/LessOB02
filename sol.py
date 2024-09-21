@@ -24,3 +24,12 @@ class User:
     def set_name(self, name):
         # Позволяет изменить имя пользователя
         self._name = name
+
+
+# Класс Admin наследует класс User
+class Admin(User):
+    def __init__(self, user_id, name):
+        # Вызываем конструктор класса User для инициализации общих данных
+        super().__init__(user_id, name)
+        # Устанавливаем уровень доступа на 'admin' для администраторов
+        self._access_level = 'admin'

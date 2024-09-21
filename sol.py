@@ -25,6 +25,7 @@ class User:
         # Позволяет изменить имя пользователя
         self._name = name
 
+
 # Класс Admin наследует класс User
 class Admin(User):
     def __init__(self, user_id, name):
@@ -39,7 +40,6 @@ class Admin(User):
         # Информация о добавленном пользователе
         print(f"User {user.get_name()} added by Admin {self.get_name()}")
 
-
     def remove_user(self, user_list, user_id):
         # Метод для удаления пользователя по ID из списка пользователей
         for user in user_list:
@@ -50,3 +50,20 @@ class Admin(User):
                 return
         # Если пользователь не найден, выводим сообщение
         print(f"User with ID {user_id} not found.")
+
+
+# Пример использования системы
+if __name__ == "__main__":
+    # Создаем двух обычных пользователей
+    user1 = User(1, "John Doe")
+    user2 = User(2, "Jane Smith")
+
+    print("# Создаем двух обычных пользователей")
+    print(f'user1 = {user1.get_name()}')
+    print(f'user2 = {user2.get_name()}')
+
+    # Создаем администратора
+    admin = Admin(0, "Admin User")
+
+    print("# Создаем администратора")
+    print(f'Admin = {admin.get_name()}')

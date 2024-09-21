@@ -2,28 +2,28 @@ class User:
     def __init__(self, user_id, name):
         # Конструктор для класса User
         # Инкапсулируем уникальный идентификатор пользователя и имя
-        self._user_id = user_id
-        self._name = name
+        self.__user_id = user_id
+        self.__name = name
         # Уровень доступа по умолчанию — 'user' для обычных сотрудников
-        self._access_level = 'user'
+        self.__access_level = 'user'
 
     # Методы для получения данных (геттеры)
     def get_user_id(self):
         # Возвращает уникальный идентификатор пользователя
-        return self._user_id
+        return self.__user_id
 
     def get_name(self):
         # Возвращает имя пользователя
-        return self._name
+        return self.__name
 
     def get_access_level(self):
         # Возвращает уровень доступа пользователя
-        return self._access_level
+        return self.__access_level
 
     # Метод для изменения имени пользователя (сеттер)
     def set_name(self, name):
         # Позволяет изменить имя пользователя
-        self._name = name
+        self.__name = name
 
 
 # Класс Admin наследует класс User
@@ -32,7 +32,7 @@ class Admin(User):
         # Вызываем конструктор класса User для инициализации общих данных
         super().__init__(user_id, name)
         # Устанавливаем уровень доступа на 'admin' для администраторов
-        self._access_level = 'admin'
+        self.__access_level = 'admin'
 
     def add_user(self, user_list, user):
         # Метод для добавления нового пользователя в список пользователей
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     print("# Создаем администратора")
     print(f'Admin = {admin.get_name()}') \
-
+ \
     # Тестируем добавление в Систему из под абминистратора
     # Пустой список пользователей
     user_list = []
@@ -91,3 +91,16 @@ if __name__ == "__main__":
     print("# Вывод оставшихся пользователей после удаления")
     for user in user_list:
         print(f"User: {user.get_name()}, Access Level: {user.get_access_level()}")
+
+    # Тестируем инкапсуляцию
+    print("# Тестируем инкапсуляцию")
+    # Пытаемся напрямую получить доступ к защищенному атрибуту (неправильно)
+    print("# Пытаемся напрямую получить доступ к защищенному атрибуту (неправильно)")
+    try:
+        print(user1.__name)  # Доступ к защищенному атрибуту, должен быть скрыт
+    except AttributeError as e:
+        print(e)
+
+    # Правильный доступ через геттер
+    print("# Правильный доступ через геттер")
+    print("User name:", user1.get_name())  # Корректный доступ через метод

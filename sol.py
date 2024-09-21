@@ -25,7 +25,6 @@ class User:
         # Позволяет изменить имя пользователя
         self._name = name
 
-
 # Класс Admin наследует класс User
 class Admin(User):
     def __init__(self, user_id, name):
@@ -33,3 +32,9 @@ class Admin(User):
         super().__init__(user_id, name)
         # Устанавливаем уровень доступа на 'admin' для администраторов
         self._access_level = 'admin'
+
+    def add_user(self, user_list, user):
+        # Метод для добавления нового пользователя в список пользователей
+        user_list.append(user)
+        # Информация о добавленном пользователе
+        print(f"User {user.get_name()} added by Admin {self.get_name()}")

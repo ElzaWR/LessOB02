@@ -38,3 +38,15 @@ class Admin(User):
         user_list.append(user)
         # Информация о добавленном пользователе
         print(f"User {user.get_name()} added by Admin {self.get_name()}")
+
+
+    def remove_user(self, user_list, user_id):
+        # Метод для удаления пользователя по ID из списка пользователей
+        for user in user_list:
+            if user.get_user_id() == user_id:
+                # Если пользователь найден, удаляем его из списка
+                user_list.remove(user)
+                print(f"User {user.get_name()} removed by Admin {self.get_name()}")
+                return
+        # Если пользователь не найден, выводим сообщение
+        print(f"User with ID {user_id} not found.")
